@@ -25,6 +25,10 @@ mongoose
 
 loadData();
 
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ message: 'Backend is up and running' });
+});
+
 app.use("/api", authRoutes);
 app.use("/api", chartRoutes);
 app.use("/api", dataRoutes);
