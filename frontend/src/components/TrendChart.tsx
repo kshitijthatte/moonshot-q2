@@ -20,7 +20,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { fetchTrendData } from "../services/trendService"; 
+import { fetchTrendData } from "../services/trendService";
 
 interface TrendChartProps {
   feature: string;
@@ -62,8 +62,8 @@ const TrendChart: React.FC<TrendChartProps> = ({
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>{feature} Usage Trend</CardTitle>
-        <CardDescription>Time spent on {feature} over time</CardDescription>
+        <CardTitle className="text-lg sm:text-xl md:text-2xl">{feature} Usage Trend</CardTitle>
+        <CardDescription className="text-sm sm:text-base">Time spent on {feature} over time</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer
@@ -73,12 +73,12 @@ const TrendChart: React.FC<TrendChartProps> = ({
               color: "hsl(var(--chart-1))",
             },
           }}
-          className="h-[300px]"
+          className="w-full aspect-[4/3] sm:aspect-[16/9]"
         >
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={data}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis
@@ -89,10 +89,14 @@ const TrendChart: React.FC<TrendChartProps> = ({
                     day: "numeric",
                   })
                 }
+                tick={{ fontSize: 12 }}
               />
-              <YAxis />
+              <YAxis 
+                tick={{ fontSize: 12 }}
+                tickFormatter={(value) => `${value}h`}
+              />
               <ChartTooltip content={<ChartTooltipContent />} />
-              <Legend />
+              <Legend wrapperStyle={{ fontSize: '12px' }} />
               <Line
                 type="monotone"
                 dataKey="timeSpent"
