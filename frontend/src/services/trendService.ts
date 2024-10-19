@@ -1,5 +1,3 @@
-// services/trendService.ts
-
 export const fetchTrendData = async (
     feature: string,
     startDate: Date | null,
