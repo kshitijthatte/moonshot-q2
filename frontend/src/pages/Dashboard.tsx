@@ -90,15 +90,17 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout, token }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Product Analytics Dashboard</h1>
-        <div>
-          <Button onClick={handleShare} className="mr-2">
-            Share Chart
-          </Button>
-          <Button onClick={onLogout}>Logout</Button>
-        </div>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 space-y-4 sm:space-y-0">
+      <h1 className="text-xl sm:text-2xl font-bold">Product Analytics Dashboard</h1>
+      <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2 w-full sm:w-auto">
+        <Button onClick={handleShare} className="w-full xs:w-auto">
+          Share Chart
+        </Button>
+        <Button onClick={onLogout} className="w-full xs:w-auto">
+          Logout
+        </Button>
       </div>
+    </div>
       <Filters
         startDate={startDate}
         endDate={endDate}
