@@ -92,11 +92,11 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout, token }) => {
     <div className="container mx-auto p-4">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 space-y-4 sm:space-y-0">
       <h1 className="text-xl sm:text-2xl font-bold">Product Analytics Dashboard</h1>
-      <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2 w-full sm:w-auto">
-        <Button onClick={handleShare} className="w-full xs:w-auto">
+      <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+        <Button onClick={handleShare} className="w-full sm:w-auto">
           Share Chart
         </Button>
-        <Button onClick={onLogout} className="w-full xs:w-auto">
+        <Button onClick={onLogout} className="w-full sm:w-auto">
           Logout
         </Button>
       </div>
