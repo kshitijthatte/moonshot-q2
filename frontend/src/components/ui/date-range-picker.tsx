@@ -1,7 +1,7 @@
 import * as React from "react"
 import { CalendarIcon } from "@radix-ui/react-icons"
-import { addDays, format } from "date-fns"
-import { DateRange, DayPicker } from "react-day-picker"
+import { format } from "date-fns"
+import { DateRange } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -24,15 +24,13 @@ export function DateRangePicker({
   onStartDateChange: (date: Date | null) => void
   onEndDateChange: (date: Date | null) => void
 }) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: startDate,
-    to: endDate,
+  const [date, setDate] = React.useState<DateRange>({
+    from: startDate || undefined,
+    to: endDate || undefined,
   })
-
   React.useEffect(() => {
-    setDate({ from: startDate, to: endDate })
+    setDate({ from: startDate || undefined, to: endDate || undefined })
   }, [startDate, endDate])
-
   return (
     <div className={cn("grid gap-2", className)}>
       <Popover>
@@ -67,9 +65,11 @@ export function DateRangePicker({
             defaultMonth={date?.from}
             selected={date}
             onSelect={(newDate) => {
-              setDate(newDate)
-              if (newDate?.from) onStartDateChange(newDate.from)
-              if (newDate?.to) onEndDateChange(newDate.to)
+              if (newDate) {
+                setDate(newDate)
+                if (newDate?.from) onStartDateChange(newDate.from)
+                if (newDate?.to) onEndDateChange(newDate.to)
+              }
             }}
             numberOfMonths={2}
           />
