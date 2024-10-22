@@ -12,8 +12,8 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ onLogout, token }) => {
-  const [startDate, setStartDate] = useState<Date | null>(new Date("2022-10-4"));
-  const [endDate, setEndDate] = useState<Date | null>(new Date("2022-10-29"));
+  const [startDate, setStartDate] = useState<Date | null>(new Date("2022-10-04T00:00:00Z"));
+  const [endDate, setEndDate] = useState<Date | null>(new Date("2022-10-29T00:00:00Z"));
   const [age, setAge] = useState<string>("");
   const [gender, setGender] = useState<string>("");
   const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
